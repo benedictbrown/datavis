@@ -1,0 +1,50 @@
+/* This is a CSS comment.  //-style comments are not allowed. */
+
+/*
+    CSS syntax is extremely finicky.  Don't forget your semi-colons, or anything else.
+
+    DEBUGGING: The easiest way to experiment with and debug CSS, is to open up your browser's developer tools.
+        In the Elements tab (Chrome, it might be called something else in other browsers), you see a pane
+        with the hierarchical structure of the document as it currently stands, and another pane with the
+        relevant CSS.  You can select any element of the HTML to show the CSS that applies to that CSS.
+        Any rule with a line through it is superceded by some other rule.
+
+        The CSS pane is live: you can edit the contents to modify rules or create new ones.  This lets you
+        experiment with different formatting rules and immediately see their effect.  It also lets you
+        experiment with putting rules in different blocks to see where they need to go, and where to
+        add !important modifiers to rules.
+
+        It's almost impossible to figure out which CSS style rules get priority when there are multiple
+        conflicting rules, except by playing with them in the browser.
+
+    MORE COMPLEX RULES: This is a very simple CSS file to illustrate some of the basics.  See
+        https://www.w3schools.com/css/default.asp for a good CSS tutorial.  Pay special attention
+        to the CSS Selectors section to see how to specify the set of tags to which a group of rules
+        should apply.  You can specify much fancier groups than just a particular ID, class, or tag name.
+*/
+
+/* #XXX specifies styling to apply to the tag whose ID is XXX */
+#some_paragraph {
+    color: blue; /* set the text color to blue */
+}
+
+/* .XXX specifies styling to apply to any tag whose classes include XXX */
+.class1 {
+    font-style: italic;
+}
+
+.class2 {
+    font-weight: bold;
+}
+
+/* XXX without any character preceding it specifies style to apply to all XXX tags */
+em {
+    font-size: 125%;
+    color: orange;
+}
+
+/* fictitious-red isn't a real HTML tag, but you can use it anyway, and specify
+    appearance and behavior through CSS and javascript */
+fictitious-red {
+    color: red;
+}

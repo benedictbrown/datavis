@@ -1,0 +1,414 @@
+<html> <!-- Every HTML file begins with an <html> tag and ends with a closing </html> -->
+    <head> <!-- The head section contains the page title and meta information -->
+        <title>Data Vis: HTML, CSS, Javascript Overview</title>
+
+        <!-- Script tags load javascript code.
+             You can also put the code directly between the open and close tags,
+             but it's almost always cleaner to put your javascript code in separate files.
+        
+             <script> tags can go in either the head or the body of your file, but putting them
+                 in the head ensures they get loaded and process before the browser tries to render the page.
+        -->
+        <script src="https://d3js.org/d3.v5.min.js"></script> <!-- This loads the d3 library -->
+        <script src="html_css_js_overview.js"></script> <!-- This is your own code that assumes the d3 libary is also loaded -->
+
+        <!--
+            <link rel="stylesheet" ... /> tags are used to load CSS stylesheets for formatting your document.
+            You can also put CSS code directly in your HTML inside <style></style> tags, but just like
+            javascript, it is usually cleaner to put it in a separate file.
+        -->
+        <link rel="stylesheet" href="html_css_js_overview.css" />
+    </head>
+
+    <body>
+        <h3>HTML Intro</h3>
+        <p>
+            This is a sample HTML file.  It is deliberately simple and ugly so you can
+            easily understanding the raw HTML source.  (Access the source by selecting View|Source
+            in your browser, or opening the Developer Tools, and selecting the Sources pane.)
+        </p>        
+        
+        The &lt;br/&gt; element introduces a line break, like this:<br/>
+        
+        HTML ignores white space just like most programming languages, so &lt;br/&gt; tags are important.<br/>
+        
+        You can look at the source for this HTML file by pressing Ctrl+U/Cmd+U in most browsers.
+        See how it is formatted hierarchically just like most programming code, even though it doesn't display that way.
+        You'll also see that the &lt; and &gt; characters that show up in HTML are actually written as &amp;lt; and &amp;gt;
+        in the HTML source because &lt; and &gt; are reserved characters.  So is &amp;, so you write it &amp;amp;.
+        This is akin to writing <tt>\n</tt> to represent a new line in most programming languages.
+
+        <p>
+            In the view source window, pay particular attention to the &lt;head&gt; section because it isn't
+            visible on the web page itself.  This is where you specify the page title that appears in your
+            browser's title bar or the page's browser tab.  It's also a good place to specify with
+            javascript and CSS files the page requires.  Some of the tags in the &lt;head&gt; section
+            are also commented to explain how they work.  HTML comments start with &lt;!-- and end with --&gt;.
+            HTML isn't very well designed, so it is not possible to nest comments.
+        </p>
+
+        <p>
+            The &lt;p&gt; tag marks a new paragraph.  It's up to the browser how to show a new paragraph
+            (e.g. with a blank line between paragraphs, or by indenting the first line) unless you
+            specify how it should appear via CSS.  Originally you just put a &lt;p&gt; tag between paragraphs,
+            but it's slightly better style in modern HTML to start a paragraph with &lt;p&gt; and end it
+            with &lt;/p&gt; so the hierarchy of tags is unambiguous.
+        </p>
+
+        <p>
+            There are lots of useful tags in HTML.  Some specify semantics or structure, like &lt;p&gt; or &lt;body&gt;, while others
+            specify appearance, like &lt;i&gt; (italics) or &lt;b&gt; (bold).  There are even duplicate tags, like &lt;em&gt; and &lt;strong&gt;,
+            which are semantic equivalents of &lt;i&gt; and &lt;b&gt;.  HTML has historically been very inconsistent about whether
+            to specify appearance, or just semantics and structure.  It is now considered good style for HTML to specify
+            <b>semantics and structure only.</b>  Appearance should be specified in CSS.  But almost everyone uses at least
+            some appearance tags.  For instance, this file uses &lt;b&gt; tags to boldface "semantics and structure only."
+        </p>
+
+        <p>
+            W3Schools has a good <a href="https://www.w3schools.com/html/default.asp">HTML tutorial</a> and reference.
+            The most "official" reference is the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">Mozilla Developer Network</a> or MDN.
+            W3Schools also has excellent tutorials for <a href="https://www.w3schools.com/css/default.asp">CSS</a> <a href="https://www.w3schools.com/graphics/svg_intro.asp">SVG</a>, and
+            <a href="https://www.w3schools.com/js/default.asp">javascript</a>, and MDN is the most complete, official reference for CSS and javascript too.
+            But be warned that W3School's javascript tutorial is a bit out of date.  Almost everyone else's is a bit out of date too.
+            <a href="https://eloquentjavascript.net/">Eloquent Javascript</a> is an online textbook that covers modern javascript, but it isn't
+            interactive like the W3School tutorial.
+        </p>
+
+        <h3>&lt;div&gt; and &lt;span&gt; tags, id and class attributes, custom tags</h3>
+        <p id="some_paragraph" class="class1 class2">
+            When it comes to creating visualizations with d3, you'll find the &lt;div&gt; and &lt;span&gt; tags extremely helpful.
+            Both tags are invisible in the browser, although &lt;div&gt; tags normally cause a line break.  The nice thing about
+            them is that you can attach a unique name to any tag (including &lt;div&gt; and &lt;span&gt;) with the id attribute.
+            Then you can access and manipulate an easily individual tag and its contents in CSS and in d3 via that id.  So these
+            tags give you an easy way to put a placeholder in your page where you will insert a visualization created in d3.
+            You can also use the class attribute to make any particular tag a member of one or more user-defined classes.
+            You can easily access and manipulate the list of tags that are members of any particular class from CSS and d3 as well.
+            Classes are most often used to apply the same kind of formatting to multiple sections of your HTML, but they come
+            <em>&lt;em&gt; tags including the one used to emphasize this phrase</em> 25% larger.)
+        </p>
+
+        <p class="class1">
+            A cool feature of HTML is that you can invent your own tags.  Browsers just ignore any tags they don't recognize.
+            But just like you can access and manipulate the list of tags that are members of a particular class, can
+            also access and manipulate the list of tags of a particular type.  That let's you write javascript code that, for example,
+            replaces any &lt;navbar;&gt; tag with the necessary HTML to render a navigation bar.  d3 doesn't really use this gimmick,
+            but more general web application framesworks like React, Vue, and Angular are built on creating custom tags for
+            different UI elements.  <fictitious-red>This sentence uses an invented &lt;fictitious-red&gt; tag to color itself red.</fictitious-red>
+        </p>
+
+        <h3>CSS</h3>
+
+        <p>
+            CSS, short for "Cascading Style Sheets," is the current mechanism for specifying appearance of web pages.  This includes things like color and font,
+            but also the position of elements on the page and various animation effects.  Check out the <a href="testproj.css">style file for this page</a>
+            for some simple, commented CSS.  Then take the <a href="https://www.w3schools.com/css/default.asp">W3Schools tutorial</a>.  Pay especial attention to
+            CSS selectors: CSS style rules are specified in blocks that apply to groups of tags; selectors are the way you specify the relvant group.
+            Selectors can refer to a specific element (by using its ID), a specific type of element (e.g. all &lt;p&gt;), all elements containing a
+            particular class attribute, and all sorts of combinations of those categories.  For instance, you can apply rules just to &lt;p&gt; tags
+            that are members of the "red" class.  Those rules might specify a red border, and would not apply to &lt;b&gt; elements that are also
+            members of the "red" class.
+        </p>
+
+        <p>
+            CSS selectors are also used in javascript code to access an manipulate HTML documents.
+            This includes d3, which is why understanding selectors is so important.
+        </p>
+        
+        <p>
+            CSS is "cascading" in the sense that many different rules may apply to a particular HTML element, and they are applyied in a vaguely
+            cascading fashion.  This means that an element normally inherits the style of any enclosing elements and rules with more specific selectors
+            usually override rules with less specific selectors.  For instance, the sentences, "&lt;em&gt; tags including the one used to emphasize
+            this phrase</em> 25% larger," and, "This sentence uses an invented &lt;fictitious-red&gt; tag to color itself red," above are both italic
+            because they inherit the "class1" styles from their enclosing &lt;p&gt; tags.  But the first of these sentences is orange because the
+            rule for the &lt;em&gt; tag gets applied after the rule for the enclosing &lt;p&gt; tag (that specified a blue color).
+        </p>
+
+        <p>
+            The rules for combining different pieces of CSS, and determining what gets priority are extremely complicated.
+            If you're not getting the result you want, your best option is to use your browser's debugging to test things out.
+            The screen shot below (click the image for the full-size version) show's Chrome's Developer Tools on the "Elements" pane,
+            viewing a draft of this web page.  The center pane shows the structure of the HTML document (this may not match the HTML file;
+            many modern web sites start with a skeleton HTML file, then use javascript code to modify it extensively after it loads).  Click
+            on any element to highlight it on the web page.  The right-hand pane shows all the CSS rules that apply to the selected element.
+            Some elements are crossed out, which means they were superceded by some other rule.  This lets you see how different rules
+            actually interact.  More importantly, <b>you can edit the CSS</b> in the browser, including adding deleting, and modifying
+            blocks of CSS or individual rules.  You'll see the updates immediately.  Once you figure out what you need to do, update
+            your CSS file, because they changes you make in your browser won't survive a refresh.
+        </p>
+
+        <p>
+            <a href="elements_pane.png" target="_NEW"><img width="50%" src="elements_pane.png"/></a>
+        </p>
+
+        <h3>SVG (Scalable Vector Graphics)</h3>
+
+        <p>
+            SVG is a format for specifying vector graphics--that is, graphics defined by lines and geometric figures rather than image pixels.
+            You can resize SVG files without any blurring or other detail loss.  Compared to existing formats for vector graphics, like PostScript,
+            SVG's main reason to exist is that it plays nicely with web browsers and HTML.  <b>You can happily treat SVG as a bunch of
+            extra HTML tags</b>.  You can access elements of an SVG using selectors, just like any other HTML element, to
+            control its appearance via CSS and maniuplate it via javascript (and especially d3).  In fact, d3 mostly lets you attach variables and arrays of
+            variables to your SVG so you can just update the underlying data and have your visualization automatically sync to the new data.
+        </p>
+
+        <p>
+            Here's a simple SVG example, taken directly from the <a href=" https://www.w3schools.com/graphics/svg_intro.asp">W3Schools SVG tutorial</a>.
+            You should follow that tutorial as well to learn more about SVG.  For now, focus especially on everything through "SVG Stroking."  Blurs,
+            filters, and shadows, and gradients can wait until you've build up some familiarity with SVG, javascript, and d3.
+        </p>
+        <p>
+            <pre>
+&lt;svg height=&quot;100&quot; width=&quot;100&quot;&gt;
+    &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;3&quot; fill=&quot;red&quot; /&gt;
+&lt;/svg&gt
+            </pre>
+        </p>
+        <p>
+            <svg width="100" height="100">
+                <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+            </svg>
+        </p>
+
+        <h3>Javascript</h3>
+
+        <p>
+            Javascript is widely considered to be the worst programming language in general use, and it earns this distinction by a healthy margin.
+            It was <a href="https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/">created in 10 days</a>,
+            and contains many mistakes that we are still stuck with.  While it looks superficially like java, <b>it behaves much more like racket or scheme</b>,
+            and its creation was driven as much or more by marketing needs than any clear purposes.  Per its creator, Brendan Eich,
+            "I was under marketing orders to make it look like Java but not make it too big for its britches.
+            It's just this sort of silly little brother language, right? The sidekick to Java."
+        </p>
+
+        <p>
+            For the most part, javascript is only used to run code within web browsers, and then only because there is no other
+            option that works in all browsers.  As soon as the web browser loads a javascript file from a &lt;script&gt; tag,
+            it also executes the file.  Just like running a python script, that means you immediately declare any global
+            variables and functions contained in the file, and also execute any code that is not contained in a function.
+        </p>
+
+        <p>
+            There are some good javascript tutorials on the web, such as the <a href="https://www.w3schools.com/js/default.asp">W3Schools tutorial</a>.
+            But it's important to realize that these, and most javascript code you'll encounter on the web (and in the d3 textbook) is out of date
+            and now considered extremely poor style.  Some of the mistakes in the original javascript are egregious and cannot be fixed without
+            breaking masses of existing code.  In some cases, new keywords and syntax have been introduced to supercede the orignal keywords and syntax;
+            both old and new still function, but <b>you should always use the new stuff</b>.  You'll generally see "modern"
+            javascript referred to as ES6/ECMAScript 6/Javascript 2015 or ES7+.  ECMA is the standards body that approves javascript standards,
+            and the version released in 2015 that contained massive changes was version 6.  Updates are therefore released roughly once a year, and have
+            been much less extensive.  That is why you mostly see references to ES6 or ES7+, and not to specific later versions.  You should still
+            use newer features though: the essential <tt>async/await</tt> keywords are part of ES8 for instance, and a new <tt>Temporal</tt>
+            object to replace javascript's horribly broken Date class is on the horizon.  (Other programming languages add new syntax and features over time
+            of course, but generally to add functionality rather than to replace things that are broken.  In those programming languages, it's often
+            a good idea to wait 5 or 10 years before adopting any new language constructs, to give time for compilers and interpreters to
+            debug their implementations.  In javascript, you should almost always adopt new features and syntax within a year of their standardization.)
+        </p>
+
+        <p>
+            Being disciplined about your javascript code is difficult, but there are fortunately excellent tools to help you.  Most programming languages
+            have a "linter" to detect style problems and other potential bugs.  The most widely used linter for javascript is called ESLint, and many
+            IDEs have support to run it <i>as you are typing</i>.  You don't even have to wait until you run your program to discover the style errors,
+            it will flag them for you immediately.  That makes it possible to enforce detailed style guidelines, with irritatingly nitpicky rules,
+            in order to keep your code consistent across large projects, avoid developing bad habits, or adjust to new versions of javascript as it changes.
+            In this class, we will use the <a href="https://github.com/airbnb/javascript">AirBnB style guide</a>, one of the most widely used javascript
+            style guides.  The guide includes a detailed list of its rules, their justifications, and examples of what goes wrong if you violate them.
+            You will find many of its rules about spacing and other details quite annoying, but enforcing consistency is a good thing.  It
+            also does a good job of enforcing proper use of modern javascript, and you're likely to encounter many projects that adhere to it.
+        </p>
+
+        <p>
+            So what does javasript look like?  Here's a table comparing some of the main javascript syntax to java, python, and racket.
+            Javascript is dynamically typed, like python or racket, meaning you can assign any type of value to any variable.  All
+            numbers are floating point in javascript--there are no integers.  It is functional, like racket, so you frequently
+            functions inside of other functions and take advantage of lexical scoping.  Anonymous functions are common.
+            Variable scope is a combination of block scoping (like java and python) within a function, and lexical scoping (like racket) across functions.
+            As long as you avoid the <i>var</i> keyword, it will usually do what you expect.  You can quote strings with either ' or ", just like python,
+            but the AirBnB style guide requires ' because you frequently embed bits of javascript code inside " within HTML files.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Constuct</td>
+                    <td>Javsscript</td>
+                    <td>Java</td>
+                    <td>Python</td>
+                    <td>Racket</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Print "hello"</td>
+                    <td>
+                        <tt>console.log('hello');</tt><br/>
+                        <i>Prints to the Console in the browser's developer tools pane</i>
+                    </td>
+                    <td><tt>System.out.println("hello");</tt></td>
+                    <td><tt>print('hello')</tt></td>
+                    <td><tt>(println "hello")</tt></td>
+                </tr>
+                <tr>
+                    <td>Declare a variable</td>
+                    <td>
+                        <tt>let x = 3;</tt><br/>
+                        <i><tt>let</tt> replaces <tt>var</tt>, which is broken</i>
+                    </td>
+                    <td><tt>int x = 3;</tt></td>
+                    <td><tt>x = 3</tt></td>
+                    <td><tt>(let [x 3] ...)</tt></td>
+                </tr>
+                <tr>
+                    <td>Declare a constant</td>
+                    <td><tt>const x = 3;</tt></td>
+                    <td><tt>final int x = 3;</tt></td>
+                    <td>N/A</td>
+                    <td><tt>(define x 3)</tt></td>
+                </tr>
+                <tr>
+                    <td>Declare a list/array</td>
+                    <td><tt>let arr = [ 1, 2, 3];</tt></td>
+                    <td>
+                        <tt>int[] arr = { 1, 2, 3 };</tt><br/>
+                        <i>Not resizable</i>
+                    </td>
+                    <td><tt>arr = [ 1, 2, 3 ]</tt></td>
+                    <td><tt>(let arr '(1 2 3) ...)</tt></td>
+                </tr>
+                <tr>
+                    <td>Declare a dictionary</td>
+                    <td>
+                        <tt>let d = { key: 'value', ... };</tt><br/>
+                        <i>Javascript call's these "objects," but they
+                            behave like python dicts.</i>
+                    </td>
+                    <td>It's messy</td>
+                    <td><tt>d = { 'key': 'value', ... }</tt></td>
+                    <td>It's messy</td>
+                </tr>
+                <tr>
+                    <td>Access an element of a dictionary</td>
+                    <td><tt>d.key</tt> or <tt>d['key']</tt></td>
+                    <td>it's messy</td>
+                    <td><tt>d['key']</tt></td>
+                    <td>it's messy</td>
+                </tr>
+                <tr>
+                    <td>Declare a function</td>
+                    <td>
+                        <tt>const foo = function(bar) { ... };</tt><br/>
+                        <i>You can also write <tt>function foo(bar) { ... }</tt>,
+                        but AirBnB style forbids it.</i>
+                    </td>
+                    <td><tt>void foo(int bar) { ... }</tt></td>
+                    <td><tt>def foo(bar):<br/>&nbsp;&nbsp;&nbsp;...</tt></td>
+                    <td><tt>(define (foo bar) ( ... ))</tt></td>
+                </tr>
+                <tr>
+                    <td>Anonymous function</td>
+                    <td>
+                        <tt>(bar) => { ... }</tt><br/>
+                        <i>You can also write <tt>function (bar) { ... }</tt>,
+                            but then javscript's <tt>this</tt> keyword doesn't
+                            do the righ thing, so AirBnB style forbids it.  ES6
+                            fixed the <tt>this</tt> behavior along with introducing
+                            the clearner arrow notation.</i>
+                    </td>
+                    <td>(bar) -> { ... }</td>
+                    <td><tt>lambda bar: ...</tt></td>
+                    <td><tt>(lambda (bar) ( ... ))</tt></td>
+                </tr>
+                <tr>
+                    <td>if/else</td>
+                    <td><tt>if (cond) { ... } else { ... }</tt></td>
+                    <td><tt>if (cond) { ... } else { ... }</tt></td>
+                    <td>
+                        <tt>
+                            if cond:<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;...<br/>
+                            else:
+                            &nbsp;&nbsp;&nbsp;&nbsp;...<br/>
+                        </tt>
+                    </td>
+                    <td><tt>(if cond ( ... ) ( ... ))</tt></td>
+                </tr>
+                <tr>
+                    <td>for loop</td>
+                    <td><tt>for (let i = 0; i &lt; 10; i++) { ... }</tt></td>
+                    <td><tt>for (int i = 0; i &lt; 10; i++) { ... }</tt></td>
+                    <td><tt>for i in range(10):<br/>&nbsp;&nbsp;&nbsp;&nbsp;...</tt></td>
+                    <td>bad style</td>
+                </tr>
+                <tr>
+                    <td>for each loop</td>
+                    <td>
+                        <tt>for (let i of arr) { ... }</tt><br/>
+                        <i>You can also iterate over an object/dict.  Make sure
+                            to use "of," not "in" to get the correct behavior.
+                        </i>
+                    </td>
+                    <td><tt>for (int i: arr) { ... }</tt></td>
+                    <td><tt>for i in arr:<br/>&nbsp;&nbsp;&nbsp;...</tt></td>
+                    <td>bad style</td>
+                </tr>
+                <tr>
+                    <td>map function</td>
+                    <td><tt>arr.map((elem) => { ... })</tt></td>
+                    <td>it's messy</td>
+                    <td><tt>[ f(elem) for elem in arr ]</tt></td>
+                    <td>(map (lambda (elem) ...) list)</td>
+                </tr>
+                <tr>
+                    <td>template strings</td>
+                    <td><tt>`hello ${var}`</tt></td>
+                    <td>n/a</td>
+                    <td>f'hello {var}'</td>
+                    <td>n/a</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>
+            Here are a few more things that are useful to keep in mind about javascript:
+            <ul>
+                <li>Never use <tt>var</tt>, even though most of the code and tutorials you find on the web use it, and the d3 textbook uses it.</li>
+                <li>
+                    Javascript's objects behave more like python's dicts than like objects in traditional OO languages.  They can contain methods
+                    because you can assign a function as the value in a key/value pair (and this is common), but there is no public/private protection,
+                    you can arbitrarily add no key/value pairs to any object, and the inheritance model is quite unique.  If you just use "objects"
+                    in javascript like you use dicts in python, you'll be fine.  If you start to think in Java-like OO terms, you'll get confused.
+                </li>
+                <li>
+                    For anonymous functions, use arrow functions (<tt>() => ...</tt>) instead of the function keyword (<tt>function () { ... }</tt>).  The syntax
+                    is cleaner, and javacsript's <tt>this</tt> keyword behaves the way you would expect inside of them.  Javascript has a <tt>this</tt>
+                    keyword similar to javascript and C++ (and <tt>self</tt> in python).  But since it's really a functional language, what <tt>this</tt>
+                    should refer to depends a lot on context.  The rules are complicated, and legacy javascript got them wrong for anonymous functions.
+                    Introducing arrow functions in ES6 was an opportunity to fix the problem.
+                </li>
+                <li>
+                    Javascript code executes in the browser as soon as the file is loaded.  Any time the HTML refers to a function in your
+                    javascript code, the function has to already have been processed by the browser.  That means you should put your script
+                    tags in the head section, so they load completely before the HTML body is parsed.  But any javascript code that references
+                    your HTML file (e.g. to replace a particular &lt;div&gt; tag with a d3 visualization) will fail if the corresponding HTML
+                    has not already been parsed.  That implies you should put your &lt;script&gt; tag at the very end of the body.  Catch-22.
+                    The simplest solution that works most of the time, is to put your script tags in the head, but wrap the top-level code
+                    in a function that only executes once the page is fully loaded.  Here's a sample:<br/><br/>
+                    <pre>
+const global1 = ...;
+const global2 = ...;
+let global3 = ...;
+
+const func1 = function (...) { ... }
+const func2 = function (...) { ... 
+
+// don't put any code here except variable and function declarations
+// because it might execute before the HTML file is fully loaded and parsed
+
+window.onload = () = {
+    // put your top-level code here, so it doesn't execute until the HTML page is fully loaded
+    // here we're inside an anonymous function that will be called when the window.onload event fires
+}
+                    </pre>
+                </li>
+            </ul>
+        </p>
+    </body>
+</html>
