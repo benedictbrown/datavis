@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Sample Javascript</title>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+
+    <body>
+        <p>
+            This page is intended to illustrate some simple javascript usage.
+            It's not a full tutorial, but shows off a few features and quirks,
+            as well as a bit about how javascript interacts with web pages.    
+        </p>
+
+        <ul>
+            <li>
+                Press Ctrl-U/Cmd-U to see the HTML source for this page.
+                You'll see that it doesn't include the parts
+                for setting a custom red/green/blue color.  That is
+                added dynamically by javascript code.
+            </li>
+            <li>
+                Open the developer tools and select the Elements tab to see
+                the structure of the HTML file after it has been modified
+                by javascript.  Look for the &lt;input&gt; elements that
+                were added by javascript code to specify a custom red/green/blue color.
+            </li>
+            <li>
+                Use the Sources pane to see (and debug) the javascript code as well as the HTML and CSS.
+                Pay attention to which parts of this page below the horizontal line are specified in
+                each file.
+            </li>
+            <li>Use the Console pane to see any errors and the output of <tt>console.log()</tt>statements.</li>
+            <li>Use the Network pane to see network requests, including the information that is sent to the server and the responses received.</li>
+        </ul>
+
+        <hr/>
+
+        <p>
+            Change the circle's color to
+            <button type="button" onclick="setSVGColor('red')">red</button>, 
+            <button type="button" onclick="setSVGColor('green')">green</button>, or
+            <button type="button" onclick="setSVGColor('blue')">blue</button>.
+            <span id="custom-color"></span>
+        </p>
+
+        <p><button type="button" onclick="hideCircle()" id="hide-circle-button">Click here</button> to hide the circle for 5 seconds.</p>
+
+        <!--
+            The figure below is a black circle and a black rectange.
+            Even though you don't see it in the HTML, there is a 
+            gray background, and the circle has a chartreuse border.
+            Those effects are defined in CSS in index.css, just to
+            illustrate that you can control SVG via both attributes and CSS.
+        -->
+        <svg width="100" height="100">
+            <!-- g defines a group in SVG so you can apply formatting,
+                 filters, and positioning to the entire group -->
+            <g fill="black" id="sample-group">
+                <circle cx="25" cy="50" r="20" id="circle" />
+                <rect x="75" y="12.5" width="40", height="75" />
+            </g>
+        </svg>
+
+        <script src="index.js"></script> <!-- It's usually best to put script tags at the end -->
+    </body>
+</html>

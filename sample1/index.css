@@ -1,0 +1,10 @@
+/* this section affects the element whose ID is circle */
+#circle {
+  stroke-width: 3;
+  stroke: chartreuse;
+}
+
+/* this section affects all <svg> tags */
+svg {
+  background-color: gray;
+}
