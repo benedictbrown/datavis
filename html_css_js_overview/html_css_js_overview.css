@@ -48,3 +48,40 @@ em {
 fictitious-red {
     color: red;
 }
+
+/* it takes a lot of CSS to make tables look reasonable */
+/* W3Schools has a whole page just on styling tables */
+
+/* this bit says all the different borders around the
+   table and individual cells should collapse into a single border */
+#comparison_table {
+    border-collapse: collapse;
+}
+
+/* this says that all th and td elements
+   that are inside the table named #comparison_table
+   should have 1-pixel black borders */
+#comparison_table > th, td {
+    border: 1px solid black;
+}
+
+/* the thead element of the #comparison_table
+   table should have a cyan background and
+   25% larger text */
+#comparison_table > thead {
+    background-color: cyan;
+    font-size: 125%;
+}
+
+/* #comparison_table has a bunch of rows (tr elements)
+   that are treated as an array<  nth-child(even)
+   says this rule only applies to even rows */
+#comparison_table > tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+/* ...and here's the counterpart for odd rows.
+   This gets us alternating row colors. */
+#comparison_table > tr:nth-child(even) {
+    background-color: white;
+}

@@ -214,11 +214,11 @@
             but the AirBnB style guide requires ' because you frequently embed bits of javascript code inside " within HTML files.
         </p>
 
-        <table>
+        <table id="comparison_table">
             <thead>
                 <tr>
                     <td>Constuct</td>
-                    <td>Javsscript</td>
+                    <td width="20%">Javsscript</td>
                     <td>Java</td>
                     <td>Python</td>
                     <td>Racket</td>
@@ -227,7 +227,7 @@
             <tbody>
                 <tr>
                     <td>Print "hello"</td>
-                    <td>
+                    <td width="20%">
                         <tt>console.log('hello');</tt><br/>
                         <i>Prints to the Console in the browser's developer tools pane</i>
                     </td>
@@ -237,7 +237,7 @@
                 </tr>
                 <tr>
                     <td>Declare a variable</td>
-                    <td>
+                    <td width="20%">
                         <tt>let x = 3;</tt><br/>
                         <i><tt>let</tt> replaces <tt>var</tt>, which is broken</i>
                     </td>
@@ -247,24 +247,24 @@
                 </tr>
                 <tr>
                     <td>Declare a constant</td>
-                    <td><tt>const x = 3;</tt></td>
+                    <td width="20%"><tt>const x = 3;</tt></td>
                     <td><tt>final int x = 3;</tt></td>
                     <td>N/A</td>
                     <td><tt>(define x 3)</tt></td>
                 </tr>
                 <tr>
                     <td>Declare a list/array</td>
-                    <td><tt>let arr = [ 1, 2, 3 ];</tt></td>
+                    <td width="20%"><tt>let arr = [ 1, 2, 3 ];</tt></td>
                     <td>
                         <tt>int[] arr = { 1, 2, 3 };</tt><br/>
                         <i>Not resizable</i>
                     </td>
-                    <td><tt>arr = [ 1, 2, 3 ]</tt></td>
+                    <td width="20%"><tt>arr = [ 1, 2, 3 ]</tt></td>
                     <td><tt>(let arr '(1 2 3) ...)</tt></td>
                 </tr>
                 <tr>
                     <td>Declare a dictionary</td>
-                    <td>
+                    <td width="20%">
                         <tt>let d = { key: 'value', ... };</tt><br/>
                         <i>Javascript call's these "objects," but they
                             behave like python dicts.</i>
@@ -275,14 +275,14 @@
                 </tr>
                 <tr>
                     <td>Access an element of a dictionary</td>
-                    <td><tt>d.key</tt> or <tt>d['key']</tt></td>
+                    <td width="20%"><tt>d.key</tt> or <tt>d['key']</tt></td>
                     <td>it's messy</td>
                     <td><tt>d['key']</tt></td>
                     <td>it's messy</td>
                 </tr>
                 <tr>
                     <td>Declare a function</td>
-                    <td>
+                    <td width="20%">
                         <tt>const foo = function(bar) { ... };</tt><br/>
                         <i>You can also write <tt>function foo(bar) { ... }</tt>,
                         but AirBnB style forbids it.</i>
@@ -293,7 +293,7 @@
                 </tr>
                 <tr>
                     <td>Anonymous function</td>
-                    <td>
+                    <td width="20%">
                         <tt>(bar) => { ... }</tt><br/>
                         <i>You can also write <tt>function (bar) { ... }</tt>,
                             but then javscript's <tt>this</tt> keyword doesn't
@@ -307,7 +307,7 @@
                 </tr>
                 <tr>
                     <td>if/else</td>
-                    <td><tt>if (cond) { ... } else { ... }</tt></td>
+                    <td width="20%"><tt>if (cond) { ... } else { ... }</tt></td>
                     <td><tt>if (cond) { ... } else { ... }</tt></td>
                     <td>
                         <tt>
@@ -321,14 +321,14 @@
                 </tr>
                 <tr>
                     <td>for loop</td>
-                    <td><tt>for (let i = 0; i &lt; 10; i++) { ... }</tt></td>
+                    <td width="20%"><tt>for (let i = 0; i &lt; 10; i++) { ... }</tt></td>
                     <td><tt>for (int i = 0; i &lt; 10; i++) { ... }</tt></td>
                     <td><tt>for i in range(10):<br/>&nbsp;&nbsp;&nbsp;&nbsp;...</tt></td>
                     <td>bad style</td>
                 </tr>
                 <tr>
                     <td>for each loop</td>
-                    <td>
+                    <td width="20%">
                         <tt>for (let i of arr) { ... }</tt><br/>
                         <i>You can also iterate over an object/dict.  Make sure
                             to use "of," not "in" to get the correct behavior.
@@ -340,14 +340,14 @@
                 </tr>
                 <tr>
                     <td>map function</td>
-                    <td><tt>arr.map((elem) => { ... })</tt></td>
+                    <td width="20%"><tt>arr.map((elem) => { ... })</tt></td>
                     <td>it's messy</td>
                     <td><tt>[ f(elem) for elem in arr ]</tt></td>
                     <td>(map (lambda (elem) ...) list)</td>
                 </tr>
                 <tr>
                     <td>template strings</td>
-                    <td><tt>`hello ${var}`</tt></td>
+                    <td width="20%"><tt>`hello ${var}`</tt></td>
                     <td>n/a</td>
                     <td>f'hello {var}'</td>
                     <td>n/a</td>
