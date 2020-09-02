@@ -254,7 +254,7 @@
                 </tr>
                 <tr>
                     <td>Declare a list/array</td>
-                    <td><tt>let arr = [ 1, 2, 3];</tt></td>
+                    <td><tt>let arr = [ 1, 2, 3 ];</tt></td>
                     <td>
                         <tt>int[] arr = { 1, 2, 3 };</tt><br/>
                         <i>Not resizable</i>
@@ -386,10 +386,14 @@ const global2 = ...;
 let global3 = ...;
 
 const func1 = function (...) { ... }
-const func2 = function (...) { ... 
+const func2 = function (...) { ... }
 
-// don't put any code here except variable and function declarations
-// because it might execute before the HTML file is fully loaded and parsed
+// Try not to put any code here except variable and function declarations
+// because it might execute before the HTML file is fully loaded and parsed.
+//
+// Many of these problems are avoided by putting your script tag at the end
+// of the body, but you can also use the trick below to run code only
+// after the page is completely loaded.
 
 window.onload = () = {
     // put your top-level code here, so it doesn't execute until the HTML page is fully loaded
