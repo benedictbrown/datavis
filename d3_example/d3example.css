@@ -1,0 +1,8 @@
+.data_point {
+  r: 2.5;
+  fill: blue
+}
+
+.axis {
+  font-size: 25%;
+}
