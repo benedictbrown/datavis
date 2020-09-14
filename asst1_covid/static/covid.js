@@ -16,7 +16,7 @@ async function updateCovidData() {
   // converting the response from JSON format into an actual
   // javascript object.
   let data = await resp.json();
-  
+
   // Covid Act Now returns data for all states, D.C., and Puerto Rico,
   // but it doesn't have metrics for quite all of them.  This filters
   // out the ones that don't have metrics, so you don't have to
@@ -31,7 +31,6 @@ async function updateCovidData() {
   // return the data that ultimately came from the Covid Act Now API
   return data;
 }
-
 
 // TO-DO: Implement this function and any helper function you need
 // You'll probably find array functions like .map and .sort very helpful.
