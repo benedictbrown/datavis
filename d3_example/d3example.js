@@ -92,6 +92,8 @@ d3.csv('cancer_survival.csv', d3.autoType).then((dataset) => {
   // a special syntax all its own
   //
   // d3 has various functions to create the "d" strings for various shapes
+  console.log(d3.line()([[1, 0], [2, 3], [3, -1]]));
+
   svg.selectAll('path') // selection of all path elements
     .data(dataset) // bind to the spreadsheet data
     .enter() // get the selection of new nodes that have to be created
