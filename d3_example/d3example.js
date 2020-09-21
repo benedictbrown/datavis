@@ -84,7 +84,7 @@ d3.csv('cancer_survival.csv', d3.autoType).then((dataset) => {
 
   // get the svg element for this plot
   const svg = d3.select('#cancer_survival_svg')
-    .attr('width', 2000) // TO-DO: Make the dimensions adapt to the window size
+    .attr('width', 2000) // the dimensions should adapt to the window size
     .attr('height', 2000);
 
   // SVG path elements are used for create complex shapes
@@ -120,6 +120,6 @@ d3.csv('cancer_survival.csv', d3.autoType).then((dataset) => {
     .attr('font-family', 'sans-serif')
     .attr('y', (d) => 2000 - 20 * d.t5yr);
 
-  // TO-DO: Graph title, x axis, survival rate labels,
-  //        make the visualization look nice and easy to understand
+  // Missing from example: Graph title, x axis, survival rate labels,
+  // making the visualization look nice and easy to understand
 });
