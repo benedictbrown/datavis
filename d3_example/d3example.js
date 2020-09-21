@@ -1,3 +1,5 @@
+/* global d3 */
+
 const padding = 50; // 20 pixels of padding around the plot
 let index = 0; // we have a 2d array of numbers; this says which row to plot
 let sampleData = []; // place holder for the sample data that will be loaded next
@@ -75,3 +77,49 @@ function toggleData() {
   index = 1 - index; // toggle which row of data we are plotting
   updatePlot();
 }
+
+// a simple gradient plot that you can improve upon
+d3.csv('cancer_survival.csv', d3.autoType).then((dataset) => {
+  console.log(dataset);
+
+  // get the svg element for this plot
+  const svg = d3.select('#cancer_survival_svg')
+    .attr('width', 2000) // TO-DO: Make the dimensions adapt to the window size
+    .attr('height', 2000);
+
+  // SVG path elements are used for create complex shapes
+  // the shape is defined by the "d" attribute, which has
+  // a special syntax all its own
+  //
+  // d3 has various functions to create the "d" strings for various shapes
+  svg.selectAll('path') // selection of all path elements
+    .data(dataset) // bind to the spreadsheet data
+    .enter() // get the selection of new nodes that have to be created
+    .append('path') // append a path element for each one
+    .attr('d', (d) => d3.line()([[250, (2000 - 20 * d.t5yr)], // create a poloyline
+      [400, (2000 - 20 * d.t10yr)], // this should really adapt to the window size
+      [550, (2000 - 20 * d.t15yr)],
+      [700, (2000 - 20 * d.t20yr)]]))
+    .attr('stroke-width', 5) // set stroke width (5 may not be the most effective width)
+    // set the stroke color based on the survival rates at 5 and 20 years
+    // (other options are probably better)
+    .attr('stroke', (d) => `rgba(${255 - 2 * d.t5yr}, ${2 * d.t20yr}, ${2 * d.t5yr}, 0.5)`)
+    .attr('fill', 'none'); // no need for a fill color, since we are just drawing lines
+
+  // set the text labels, but without making them especially attractive or readable,
+  // or preventing them from overlapping
+  svg.selectAll('text')
+    .data(dataset)
+    .enter()
+    .append('text')
+    .text((d) => d.Type)
+    .attr('font-size', '20px')
+    .attr('fill', 'black')
+    .attr('stroke', 'black')
+    .attr('x', 10)
+    .attr('font-family', 'sans-serif')
+    .attr('y', (d) => 2000 - 20 * d.t5yr);
+
+  // TO-DO: Graph title, x axis, survival rate labels,
+  //        make the visualization look nice and easy to understand
+});

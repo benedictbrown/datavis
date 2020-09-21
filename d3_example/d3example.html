@@ -1,24 +1,33 @@
 <html>
-  <head>
-    <title>d3 Example</title>
 
-    <!-- use the latest d3 6.x release
+<head>
+  <title>d3 Example</title>
+
+  <!-- use the latest d3 6.x release
          included in the header so it fully loads
          before our own script needs to use it
     -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
 
-    <link rel="stylesheet" href="d3example.css" />
-  </head>
-  <body>
-    <div>
-      <button onclick="toggleData()">Toggle Data Sets</button>
-    </div>
-    <svg id="d3anchor" width="50%" height="50%">
-      <g id="xaxis" class="axis"></g> <!-- empty group elements where we can insert and replace axes -->
-      <g id="yaxis" class="axis"></g>
-    </svg>
+  <link rel="stylesheet" href="d3example.css" />
+</head>
 
-    <script src="d3example.js"></script>
-  </body>
+<body>
+  <div>
+    <button onclick="toggleData()">Toggle Data Sets</button>
+  </div>
+  <div></div>
+  <svg id="d3anchor" width="50%" height="50%">
+    <g id="xaxis" class="axis"></g> <!-- empty group elements where we can insert and replace axes -->
+    <g id="yaxis" class="axis"></g>
+  </svg>
+  </div>
+
+  <div>
+    <svg id="cancer_survival_svg"></svg>
+  </div>
+
+  <script src="d3example.js"></script>
+</body>
+
 </html>
