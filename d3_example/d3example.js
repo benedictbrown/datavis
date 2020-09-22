@@ -38,14 +38,15 @@ function updatePlot() {
     .classed('data_point', true); // assign the data_point class to this element
 
   plotData.merge(plotNewData) // do the following for every point that is updated OR added
+    .transition() // animate the changes
     .attr('cx', (d, i) => xScale(i + 1)) // set the x coordinate to the elements array index + 1, scaled to space things out
     .attr('cy', (d) => yScale(d)); // set the y coordinate to the array value, also scaled to space things out
 
-  // replace the axes
+  // replace the axes, and animation the changes
   const xAxis = d3.axisBottom(xScale);
   const yAxis = d3.axisLeft(yScale);
-  d3.select('#xaxis').call(xAxis).attr('transform', `translate(0 ${h - padding})`);
-  d3.select('#yaxis').call(yAxis).attr('transform', `translate(${padding} 0)`);
+  d3.select('#xaxis').transition().call(xAxis).attr('transform', `translate(0 ${h - padding})`);
+  d3.select('#yaxis').transition().call(yAxis).attr('transform', `translate(${padding} 0)`);
 }
 
 // load and parse d3example.csv
